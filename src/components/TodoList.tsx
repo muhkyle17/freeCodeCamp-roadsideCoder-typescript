@@ -1,9 +1,18 @@
 import React from 'react'
+import './styles.css'
+import { Todo } from '../model'
 
-const TodoList: React.FC = () => {
+interface Props {
+  todos: Todo[]
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+}
+
+const TodoList: React.FC<Props> = ({ todos, setTodos }: Props) => {
   return (
-    <div>
-      <p>TodoList</p>
+    <div className='todos'>
+      {todos.map(todo => (
+        <li>{todo.todo}</li>
+      ))}
     </div>
   )
 }
